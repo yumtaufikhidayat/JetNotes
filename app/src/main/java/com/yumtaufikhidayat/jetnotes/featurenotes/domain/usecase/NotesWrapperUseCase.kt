@@ -1,6 +1,6 @@
 package com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase
 
-data class NotesUseCase(
+data class NotesWrapperUseCase(
     val getNotesUseCase: GetNotesUseCase,
     val deleteNotesUseCase: DeleteNotesUseCase
 )
