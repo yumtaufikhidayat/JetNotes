@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.yumtaufikhidayat.jetnotes.featurenotes.data.datasource.NotesDatabase
 import com.yumtaufikhidayat.jetnotes.featurenotes.data.repository.NoteRepositoryImpl
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.repository.INotesRepository
+import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.AddNotesUseCase
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.DeleteNotesUseCase
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.GetNotesUseCase
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.NotesWrapperUseCase
@@ -39,7 +40,8 @@ object AppModule {
     fun providesNotesUseCase(repository: INotesRepository): NotesWrapperUseCase {
         return NotesWrapperUseCase(
             getNotesUseCase = GetNotesUseCase(repository),
-            deleteNotesUseCase = DeleteNotesUseCase(repository)
+            deleteNotesUseCase = DeleteNotesUseCase(repository),
+            addNotesUseCase = AddNotesUseCase(repository)
         )
     }
 }
