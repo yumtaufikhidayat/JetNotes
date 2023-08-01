@@ -17,11 +17,13 @@ data class Notes(
     val timestamp: Long,
     val color: Int,
 ) {
-    val noteColors = listOf(
-        RedOrange,
-        LightGreen,
-        Violet,
-        BabyBlue,
-        RedPink
-    )
+    companion object {
+        val noteColors = listOf(
+            RedOrange,
+            LightGreen,
+            Violet,
+            BabyBlue,
+            RedPink
+        )
+    }
 }
