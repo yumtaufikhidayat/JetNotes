@@ -7,6 +7,7 @@ import com.yumtaufikhidayat.jetnotes.featurenotes.data.repository.NoteRepository
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.repository.INotesRepository
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.AddNotesUseCase
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.DeleteNotesUseCase
+import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.GetNotes
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.GetNotesUseCase
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.NotesWrapperUseCase
 import dagger.Module
@@ -41,7 +42,8 @@ object AppModule {
         return NotesWrapperUseCase(
             getNotesUseCase = GetNotesUseCase(repository),
             deleteNotesUseCase = DeleteNotesUseCase(repository),
-            addNotesUseCase = AddNotesUseCase(repository)
+            addNotesUseCase = AddNotesUseCase(repository),
+            getNotes = GetNotes(repository)
         )
     }
 }
