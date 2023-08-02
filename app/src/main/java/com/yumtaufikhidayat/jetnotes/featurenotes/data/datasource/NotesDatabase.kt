@@ -1,11 +1,11 @@
 package com.yumtaufikhidayat.jetnotes.featurenotes.data.datasource
 
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.yumtaufikhidayat.jetnotes.featurenotes.domain.model.Notes
 
 @Database(
-    entities = [Note::class],
+    entities = [Notes::class],
     version = 1
 )
 abstract class NotesDatabase : RoomDatabase() {
