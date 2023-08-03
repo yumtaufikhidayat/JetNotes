@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.model.InvalidNotesException
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.model.Notes
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.usecase.NotesWrapperUseCase
+import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -41,7 +42,7 @@ class AddEditNotesViewModel @Inject constructor(
     private var currentNoteId: Int? = null
 
     init {
-        savedStateHandle.get<Int>("noteId")?.let { noteId ->
+        savedStateHandle.get<Int>(Utils.KEY_NOTES_ID)?.let { noteId ->
             if (noteId != -1) {
                 viewModelScope.launch {
                     notesWrapperUseCase.getNotes(noteId)?.also { notes ->
@@ -56,7 +57,7 @@ class AddEditNotesViewModel @Inject constructor(
                             isHintVisible = false
                         )
 
-                        _noteColor.value = notes.color
+                        _noteColor.intValue = notes.color
                     }
                 }
             }
@@ -88,7 +89,7 @@ class AddEditNotesViewModel @Inject constructor(
                 )
             }
             is AddEditNotesEvent.ChangeColor -> {
-                _noteColor.value = event.color
+                _noteColor.intValue = event.color
             }
             is AddEditNotesEvent.SaveNotes -> {
                 viewModelScope.launch {
