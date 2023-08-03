@@ -14,6 +14,7 @@ import androidx.navigation.navArgument
 import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.addeditnotes.AddEditNotesScreen
 import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.notes.NotesScreen
 import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.utils.Screen
+import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.utils.Utils
 import com.yumtaufikhidayat.jetnotes.ui.theme.JetNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
+                    val notesColor = Utils.KEY_NOTES_COLOR
                     NavHost(
                         navController = navController,
                         startDestination = Screen.NotesScreen.route
@@ -40,20 +42,20 @@ class MainActivity : ComponentActivity() {
                                     "?notesId={notesId}&notesColor={notesColor}",
                             arguments = listOf(
                                 navArgument(
-                                    name = "notesId"
+                                    name = Utils.KEY_NOTES_ID
                                 ) {
                                     type = NavType.IntType
                                     defaultValue = -1
                                 },
                                 navArgument(
-                                    name = "notesColor"
+                                    name = notesColor
                                 ) {
                                     type = NavType.IntType
                                     defaultValue = -1
                                 }
                             )
                         ) {
-                            val color = it.arguments?.getInt("noteColor") ?: -1
+                            val color = it.arguments?.getInt(notesColor) ?: -1
                             AddEditNotesScreen(navController = navController, notesColor = color)
                         }
                     }
