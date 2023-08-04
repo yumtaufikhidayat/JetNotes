@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.yumtaufikhidayat.jetnotes.featurenotes.domain.model.Notes
+import com.yumtaufikhidayat.jetnotes.featurenotes.presentation.addeditnotes.components.TransparentTextHintField
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
